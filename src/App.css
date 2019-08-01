@@ -1,0 +1,118 @@
+/* font-family: 'Open Sans', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Oxygen', sans-serif; */
+
+.App {
+  text-align: center;
+}
+
+.countdownContainerGrid {
+  display: grid;
+  width: 100vw;
+  grid-template-columns: repeat(3, 33.33%);
+  justify-items: center;
+}
+
+.countdownContainerGrid2 {
+  display: grid;
+  width: 100vw;
+  grid-template-columns: repeat(2, 50%);
+  justify-items: center;
+}
+.countdownContainerGrid1 {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
+
+.addEventBtn {
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+  font-size: 2em;
+  width: 200px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 30px;
+  background: #43cea2;
+  transition: 1s;
+}
+
+.eventContainer {
+  width: 500px;
+  height: 250px;
+  margin-bottom: 2em;
+}
+
+.textContainer {
+  bottom: 250px;
+  position: relative;
+  background: #43cea2;
+  background: -webkit-linear-gradient(to right, #185a9d, #43cea2);
+  background: linear-gradient(to right, #185a9d, #43cea2);
+  width: 500px;
+  height: 250px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.text {
+  position: absolute;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.imgContainer {
+  position: relative;
+  width: 500px;
+  height: 250px;
+}
+
+.imgContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+  filter: brightness(60%);
+  opacity: .8;
+}
+
+.evntAddFormCont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.eventAdderForm {
+  margin: 1em 0 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  font-size: 1.75em;
+  color: white;
+  border-radius: 20px;
+  background: #588abd;
+  width: 30%;
+  padding: 1em;
+}
+
+.eventAdderForm img {
+  width: 40px;
+  height: auto;
+  filter: invert(100%);
+}
+
+.eventAdderForm input {
+  font-size: 1em;
+  width: 60%;
+  border: none;
+  text-align: center;
+}
