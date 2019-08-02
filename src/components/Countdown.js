@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Link, withRouter } from 'react-router-dom';
+
+import closeIcon from '../assets/images/close-cross-in-circular-outlined-interface-button-2.png';
 
 let bg = ""
 let bgColor = {}
 
-export default class Countdown extends Component {
+class Countdown extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -29,6 +33,12 @@ export default class Countdown extends Component {
         }
     }
 
+    deleteEvent = () => {
+        axios.delete(`http://localhost:3001/events/${this.props.id}`)
+            .then(res => console.log(res));
+        this.props.deleted();
+    }
+
     render() {
 
         this.checkForBackground();
@@ -46,9 +56,12 @@ export default class Countdown extends Component {
         return (
             <div className="eventContainer">
                 <div className="imgContainer">
-                    <img src={bg} alt="your-mom" ></img>
+                    <img src={bg} alt="background" ></img>
                 </div>
-                <div className="textContainer" style={ bgColor }>
+                <div className="textContainer" style={bgColor}>
+                    <Link to="/">
+                        <img onClick={this.deleteEvent} src={closeIcon} alt="close"></img>
+                    </Link>
                     <div className="text">
                         <h1>{this.props.title}</h1>
                         <h4>{this.props.month}/{this.props.day}/{this.props.year}</h4>
@@ -59,3 +72,5 @@ export default class Countdown extends Component {
         )
     }
 }
+
+export default withRouter(Countdown);

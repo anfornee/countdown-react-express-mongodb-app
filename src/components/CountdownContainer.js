@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
 
 import Countdown from './Countdown';
 
@@ -9,7 +8,7 @@ class CountdownContainer extends Component {
         events: [],
         amountOfEvents: 0,
         countdownContainerGrid: "countdownContainerGrid",
-        eventAdded: false
+        deletedEvent: false,
     }
 
     fetchEvents = () => {
@@ -30,28 +29,27 @@ class CountdownContainer extends Component {
         });
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.newEvent !== this.props.newEvent) {
-            this.fetchEvents();
-        }
+    deleted = () => {
+        this.setState({ deletedEvent: !this.state.deletedEvent }, () => {
+            this.reRender();
+        });
     }
 
-    componentDidMount() {
-        this.fetchEvents();
-        this.props.dispatch({
-            type: 'NO'
-        });
-        this.setState({ eventAdded: false });
+    reRender = () => {
+        this.setState({ deletedEvent: !this.state.newEvent });
     }
 
     render() {
+        this.fetchEvents();
         return (
             <div className="App">
                 <h1>Stuff be happening!</h1>
                 <div className={this.state.countdownContainerGrid}>
                     {this.state.events.map(event =>
                         <Countdown
+                            deleted={this.deleted}
                             key={event._id}
+                            id={event._id}
                             title={event.title}
                             month={event.month}
                             day={event.day}
@@ -65,10 +63,4 @@ class CountdownContainer extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        newEvent: state.newEvent
-    };
-}
-
-export default connect(mapStateToProps)(CountdownContainer);
+export default CountdownContainer;
