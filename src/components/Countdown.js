@@ -11,7 +11,8 @@ class Countdown extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            second: 0
+            second: 0,
+            deleted: false
         }
     }
 
@@ -36,13 +37,13 @@ class Countdown extends Component {
     deleteEvent = () => {
         axios.delete(`http://localhost:3001/events/${this.props.id}`)
             .then(res => console.log(res));
+            this.setState({ deleted: true });
         this.props.deleted();
     }
 
     render() {
-
         this.checkForBackground();
-
+        
         const event = new Date(`${this.props.month}/${this.props.day}/${this.props.year}`).getTime();
 
         let date = new Date().getTime();

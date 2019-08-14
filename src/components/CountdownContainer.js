@@ -9,38 +9,40 @@ class CountdownContainer extends Component {
         amountOfEvents: 0,
         countdownContainerGrid: "countdownContainerGrid",
         deletedEvent: false,
+        newEvent: this.props.newEvent
     }
 
     fetchEvents = () => {
         const encodedURI = window.encodeURI(this.props.uri);
         return axios.get(encodedURI).then(res => {
-            this.setState(() => {
-                return {
-                    events: res.data,
-                    amountOfEvents: res.data.length
-                }
-            }, () => {
-                if (this.state.amountOfEvents === 2) {
-                    this.setState({ countdownContainerGrid: "countdownContainerGrid2" })
-                } else if (this.state.amountOfEvents === 1) {
-                    this.setState({ countdownContainerGrid: "countdownContainerGrid1" })
-                }
-            });
+            this.setState({ events: res.data, amountOfEvents: res.data.length },
+                () => {
+                    if (this.state.amountOfEvents === 2) {
+                        this.setState({ countdownContainerGrid: "countdownContainerGrid2" })
+                    } else if (this.state.amountOfEvents === 1) {
+                        this.setState({ countdownContainerGrid: "countdownContainerGrid1" })
+                    }
+                });
         });
+    }
+
+    componentDidMount() {
+        this.fetchEvents();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props !== nextProps) {
+            this.setState(nextProps);
+        }
     }
 
     deleted = () => {
-        this.setState({ deletedEvent: !this.state.deletedEvent }, () => {
-            this.reRender();
-        });
-    }
-
-    reRender = () => {
-        this.setState({ deletedEvent: !this.state.newEvent });
+        this.fetchEvents();
+        this.setState({ deletedEvent: !this.state.deletedEvent });
     }
 
     render() {
-        this.fetchEvents();
+        console.log(this.props.newEvent);
         return (
             <div className="App">
                 <h1>Stuff be happening!</h1>

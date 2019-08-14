@@ -37,12 +37,6 @@ class App extends Component {
     }
 
     addedEvent = () => {
-        this.setState({ newEvent: !this.state.newEvent }, () => {
-            this.reRender()
-        });
-    }
-
-    reRender = () => {
         this.setState({ newEvent: !this.state.newEvent });
     }
 
@@ -52,6 +46,7 @@ class App extends Component {
                 <div style={this.style} >
                     <AddEventBtn hideMe={this.hideMe} />
                 </div>
+
                 <Route
                     exact path="/add-an-event"
                     render={() =>
