@@ -35,10 +35,9 @@ router.route('/add-an-event').post((req, res) => {
 
 /////////// Delete Event ////////////
 
-router.route('/:id').delete((req, res) => {
-    let id = req.params.id;
-
-    Event.deleteOne({ _id: new mongo.ObjectId(id) }, function (err, results) {
+router.delete('/delete', async (req, res) => {
+    await Event.findByIdAndDelete(req.query.eventId, err => {
+        res.send(err)
     });
 });
 

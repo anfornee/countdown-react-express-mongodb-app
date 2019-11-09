@@ -15,19 +15,21 @@ class CountdownContainer extends Component {
     fetchEvents = () => {
         const encodedURI = window.encodeURI(this.props.uri);
         return axios.get(encodedURI).then(res => {
-            this.setState({ events: res.data, amountOfEvents: res.data.length },
-                () => {
-                    if (this.state.amountOfEvents === 2) {
-                        this.setState({ countdownContainerGrid: "countdownContainerGrid2" })
-                    } else if (this.state.amountOfEvents === 1) {
-                        this.setState({ countdownContainerGrid: "countdownContainerGrid1" })
-                    }
-                });
+
         });
     }
 
-    componentDidMount() {
-        this.fetchEvents();
+    async componentDidMount() {
+        const res = await fetch(`http://localhost:3001/events`);
+        const posts = await res.json();
+        this.setState({ events: posts, amountOfEvents: posts.length },
+            () => {
+                if (this.state.amountOfEvents === 2) {
+                    this.setState({ countdownContainerGrid: "countdownContainerGrid2" })
+                } else if (this.state.amountOfEvents === 1) {
+                    this.setState({ countdownContainerGrid: "countdownContainerGrid1" })
+                }
+            });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -36,9 +38,24 @@ class CountdownContainer extends Component {
         }
     }
 
-    deleted = () => {
-        this.fetchEvents();
-        this.setState({ deletedEvent: !this.state.deletedEvent });
+    deleted = eventId => {
+        console.log('first test')
+        axios.delete('http://localhost:3001/events/delete', { params: { eventId }})
+            .then(async (response) => {
+                console.log(response)
+                const res = await fetch(`http://localhost:3001/events`);
+                const posts = await res.json();
+                console.log('second test')
+                this.setState({ events: posts, amountOfEvents: posts.length },
+                    () => {
+                        if (this.state.amountOfEvents === 2) {
+                            this.setState({ countdownContainerGrid: "countdownContainerGrid2" })
+                        } else if (this.state.amountOfEvents === 1) {
+                            this.setState({ countdownContainerGrid: "countdownContainerGrid1" })
+                        }
+                    });
+            })
+            .catch(err => console.log(err));
     }
 
     render() {

@@ -12,8 +12,15 @@ class Countdown extends Component {
         super(props)
         this.state = {
             second: 0,
-            deleted: false
+            deleted: false,
+            eventId: '',
         }
+    }
+
+    componentDidMount() {
+        this.setState({
+            eventId: this.props.id
+        });
     }
 
     interval = setInterval(() => {
@@ -32,13 +39,6 @@ class Countdown extends Component {
                 background: "none"
             };
         }
-    }
-
-    deleteEvent = () => {
-        axios.delete(`http://localhost:3001/events/${this.props.id}`)
-            .then(res => console.log(res));
-            this.setState({ deleted: true });
-        this.props.deleted();
     }
 
     render() {
@@ -61,7 +61,12 @@ class Countdown extends Component {
                 </div>
                 <div className="textContainer" style={bgColor}>
                     <Link to="/">
-                        <img onClick={this.deleteEvent} src={closeIcon} alt="close"></img>
+                        <img 
+                            onClick={
+                                () => this.props.deleted(this.state.eventId)
+                            } 
+                            src={closeIcon} alt="close">
+                        </img>
                     </Link>
                     <div className="text">
                         <h1>{this.props.title}</h1>
