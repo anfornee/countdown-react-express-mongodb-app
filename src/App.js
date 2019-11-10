@@ -14,7 +14,8 @@ class App extends Component {
         this.state = {
             isHidden: false,
             newEvent: false,
-            deletedEvent: false
+            deletedEvent: false,
+            eventInfo: {}
         }
     }
 
@@ -40,6 +41,10 @@ class App extends Component {
         this.setState({ newEvent: !this.state.newEvent });
     }
 
+    getNewEvent = eventInfo => {
+        this.setState({ eventInfo })
+    }
+
     render() {
         return (
             <Router>
@@ -51,11 +56,12 @@ class App extends Component {
                     exact path="/add-an-event"
                     render={() =>
                         <EventCreator
+                            getNewEvent={this.getNewEvent}
                             addedEvent={this.addedEvent}
                             bringMeBack={this.bringMeBack}
                         />}
                 />
-                <CountdownContainer newEvent={this.state.newEvent} uri="http://localhost:3001/events/" />
+                <CountdownContainer eventInfo={this.state.eventInfo} newEvent={this.state.newEvent} uri="http://localhost:3001/events/" />
             </Router>
         )
     }

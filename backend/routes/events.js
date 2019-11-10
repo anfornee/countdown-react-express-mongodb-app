@@ -29,7 +29,7 @@ router.route('/add-an-event').post((req, res) => {
     });
 
     newEvent.save()
-        .then(() => res.json('Event added!'))
+        .then(() => res.json(newEvent))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 

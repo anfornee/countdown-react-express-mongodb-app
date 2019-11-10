@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 
 import closeIcon from '../assets/images/close-cross-in-circular-outlined-interface-button-2.png';

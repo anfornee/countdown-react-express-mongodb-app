@@ -32,21 +32,24 @@ class CountdownContainer extends Component {
             });
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (this.props !== nextProps) {
-            this.setState(nextProps);
-        }
+    newEvent = eventInfo => {
+        this.setState({
+            events: [...this.state.events, eventInfo]
+        });
     }
 
     deleted = eventId => {
-        console.log('first test')
         axios.delete('http://localhost:3001/events/delete', { params: { eventId }})
             .then(async (response) => {
-                console.log(response)
                 const res = await fetch(`http://localhost:3001/events`);
-                const posts = await res.json();
-                console.log('second test')
-                this.setState({ events: posts, amountOfEvents: posts.length },
+                // const events = await res.json();
+                const events = this.state.events.filter((value, index, arr) => {
+
+                    return value._id !== eventId;
+                
+                })
+                console.log(events)
+                this.setState({ events, amountOfEvents: events.length },
                     () => {
                         if (this.state.amountOfEvents === 2) {
                             this.setState({ countdownContainerGrid: "countdownContainerGrid2" })
@@ -59,12 +62,16 @@ class CountdownContainer extends Component {
     }
 
     render() {
-        console.log(this.props.newEvent);
+        let events = this.state.events;
+        if (this.props.newEvent) {
+            console.log('farts')
+            events = [...events, this.props.eventInfo]
+        }
         return (
             <div className="App">
                 <h1>Stuff be happening!</h1>
                 <div className={this.state.countdownContainerGrid}>
-                    {this.state.events.map(event =>
+                    {events.map(event =>
                         <Countdown
                             deleted={this.deleted}
                             key={event._id}
