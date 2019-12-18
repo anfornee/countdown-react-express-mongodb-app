@@ -47,26 +47,22 @@ class EventCreator extends Component {
         axios.post('http://localhost:3001/events/add-an-event', event)
             .then(res => {
                 const eventInfo = res.data;
-                console.log(eventInfo)
-                this.props.getNewEvent(eventInfo);
+                this.setState({
+                    title: '',
+                    year: 0,
+                    month: 0,
+                    day: 0,
+                    background: ''
+                }, () => {
+                    this.props.bringMeBack();
+                    this.props.history.push('/')
+                    this.props.addedEvent(eventInfo);
+                });
             })
             .catch(e => console.log(e))
-
-        this.setState({
-            title: '',
-            year: 0,
-            month: 0,
-            day: 0,
-            background: ''
-        }, () => {
-            this.props.bringMeBack();
-            this.props.history.push('/')
-            this.props.addedEvent();
-        });
     }
 
     render() {
-        console.log('event creator props: ', this.props)
         return (
             <div className="evntAddFormCont">
                 <div className="eventAdderForm">

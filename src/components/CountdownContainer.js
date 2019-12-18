@@ -12,13 +12,6 @@ class CountdownContainer extends Component {
         newEvent: this.props.newEvent
     }
 
-    fetchEvents = () => {
-        const encodedURI = window.encodeURI(this.props.uri);
-        return axios.get(encodedURI).then(res => {
-
-        });
-    }
-
     async componentDidMount() {
         const res = await fetch(`http://localhost:3001/events`);
         const posts = await res.json();
@@ -33,22 +26,20 @@ class CountdownContainer extends Component {
     }
 
     newEvent = eventInfo => {
+        console.log('i ran')
         this.setState({
             events: [...this.state.events, eventInfo]
         });
     }
 
     deleted = eventId => {
-        axios.delete('http://localhost:3001/events/delete', { params: { eventId }})
+        axios.delete('http://localhost:3001/events/delete', { params: { eventId } })
             .then(async (response) => {
-                const res = await fetch(`http://localhost:3001/events`);
+                // const res = await fetch(`http://localhost:3001/events`);
                 // const events = await res.json();
                 const events = this.state.events.filter((value, index, arr) => {
-
                     return value._id !== eventId;
-                
                 })
-                console.log(events)
                 this.setState({ events, amountOfEvents: events.length },
                     () => {
                         if (this.state.amountOfEvents === 2) {
@@ -62,11 +53,11 @@ class CountdownContainer extends Component {
     }
 
     render() {
-        let events = this.state.events;
-        if (this.props.newEvent) {
+        if (this.props.eventInfo._id) {
             console.log('farts')
-            events = [...events, this.props.eventInfo]
         }
+        console.log('event info props: ', this.props.eventInfo)
+        let events = this.state.events;
         return (
             <div className="App">
                 <h1>Stuff be happening!</h1>
