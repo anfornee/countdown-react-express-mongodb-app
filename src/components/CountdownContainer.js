@@ -32,6 +32,7 @@ class CountdownContainer extends Component {
 
     render() {
         let events = this.props.events;
+        
         return (
             <div className="App">
                 <h1>Stuff be happening!</h1>
