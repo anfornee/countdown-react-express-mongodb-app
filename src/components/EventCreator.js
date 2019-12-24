@@ -54,9 +54,8 @@ class EventCreator extends Component {
                     day: 0,
                     background: ''
                 }, () => {
-                    this.props.bringMeBack();
-                    this.props.history.push('/')
-                    this.props.addedEvent(eventInfo);
+                    this.props.bringMeBack(eventInfo);
+                    this.props.history.push('/home')
                 });
             })
             .catch(e => console.log(e))
@@ -68,7 +67,7 @@ class EventCreator extends Component {
                 <div className="eventAdderForm">
                     <Link
                         style={{ position: "relative", alignSelf: "flex-start", bottom: "15px" }}
-                        onClick={this.props.bringMeBack} to="/" >
+                        onClick={this.props.bringMeBack} to="/home" >
                         <img src={closeIcon} alt="close"></img>
                     </Link>
                     <form onSubmit={this.onSubmit}>

@@ -12,14 +12,7 @@ class Countdown extends Component {
         this.state = {
             second: 0,
             deleted: false,
-            eventId: '',
         }
-    }
-
-    componentDidMount() {
-        this.setState({
-            eventId: this.props.id
-        });
     }
 
     interval = setInterval(() => {
@@ -62,7 +55,7 @@ class Countdown extends Component {
                     <Link to="/">
                         <img 
                             onClick={
-                                () => this.props.deleted(this.state.eventId)
+                                () => this.props.deleted(this.props.id, this.props.index)
                             } 
                             src={closeIcon} alt="close">
                         </img>

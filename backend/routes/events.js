@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let Event = require('../models/events.model');
+const Event = require('../models/events.model');
 const mongo = require('mongodb')
 
 
