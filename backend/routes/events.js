@@ -1,7 +1,6 @@
-const router = require('express').Router();
-const Event = require('../models/events.model');
-const mongo = require('mongodb')
-
+const express = require('express')
+const router = express.Router()
+const Event = require('../models/events.model')
 
 /////////// Gets Event ////////////
 
@@ -41,4 +40,4 @@ router.delete('/delete', async (req, res) => {
     });
 });
 
-module.exports = router;
+module.exports = router
