@@ -7,8 +7,7 @@ export class AddEventBtn extends Component {
             <div className="addEventBtn">
                 <div
                     style={{ textDecoration: 'none', color: 'black' }}
-                    onClick={this.props.hideMe}
-                    to="/add-an-event">
+                    onClick={this.props.hideMe}>
                     Add an event!
                 </div>
             </div>

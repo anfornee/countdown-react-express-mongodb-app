@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import closeIcon from '../assets/images/close-cross-in-circular-outlined-interface-button-2.png';
 
@@ -52,14 +52,14 @@ class Countdown extends Component {
                     <img src={bg} alt="background" ></img>
                 </div>
                 <div className="textContainer" style={bgColor}>
-                    <Link to='/'>
+                    <div>
                         <img
                             onClick={
                                 () => this.props.deleted(this.props.id, this.props.index)
                             } 
                             src={closeIcon} alt="close">
                         </img>
-                    </Link>
+                    </div>
                     <div className="text">
                         <h1>{this.props.title}</h1>
                         <h4>{this.props.month}/{this.props.day}/{this.props.year}</h4>

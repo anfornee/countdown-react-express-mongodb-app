@@ -65,7 +65,6 @@ class EventCreator extends Component {
                     background: ''
                 }, () => {
                     this.props.getNewEvent(eventInfo);
-                    this.props.history.push(`/${this.state.userName}`)
                 });
             })
             .catch(e => console.log(e))

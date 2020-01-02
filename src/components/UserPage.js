@@ -93,7 +93,7 @@ export default class UserPage extends Component {
                 top: '-750px'
             },
             isHidden: false, 
-            events: [...this.state.events.reverse(), eventInfo] })
+            events: [...this.state.events, eventInfo] })
     }
 
     deleted = (eventId, index) => {
