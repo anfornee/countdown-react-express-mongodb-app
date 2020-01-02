@@ -8,7 +8,7 @@ import UserPage from './components/UserPage'
 
 class App extends Component {
 
-  render() {
+  render () {
     return (
       <Router>
         <Route exact path='/' component={Login} />

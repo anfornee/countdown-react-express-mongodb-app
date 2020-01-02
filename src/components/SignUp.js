@@ -32,6 +32,7 @@ export default class SignUp extends Component {
                 if (!user) {
                     console.log('Sign up unsuccesful!')
                 } else {
+                    localStorage.setItem('userId', user._id)
                     localStorage.setItem('name', user.name)
                     localStorage.setItem('loggedIn', 'true')
                     this.setState({ 

@@ -4,8 +4,8 @@ const Event = require('../models/events.model')
 
 /////////// Gets Event ////////////
 
-router.route('/').get((req, res) => {
-    Event.find()
+router.route('/:userId').get((req, res) => {
+    Event.find({ userId: req.params.userId })
         .then(events => res.json(events))
         .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -13,19 +13,16 @@ router.route('/').get((req, res) => {
 /////////// Add Event ////////////
 
 router.route('/add-an-event').post((req, res) => {
-    const title = req.body.title;
-    const day = Number(req.body.day);
-    const month = Number(req.body.month);
-    const year = Number(req.body.year);
-    const background = req.body.background;
 
     const newEvent = new Event({
-        title,
-        day,
-        month,
-        year,
-        background,
-    });
+        userId: req.body.userId,
+        userName: req.body.userName,
+        title: req.body.title,
+        day: Number(req.body.day),
+        month: Number(req.body.month),
+        year: Number(req.body.year),
+        background: req.body.background
+    })
 
     newEvent.save()
         .then(() => res.json(newEvent))

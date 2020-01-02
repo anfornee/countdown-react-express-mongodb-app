@@ -52,8 +52,8 @@ class Countdown extends Component {
                     <img src={bg} alt="background" ></img>
                 </div>
                 <div className="textContainer" style={bgColor}>
-                    <Link to="/">
-                        <img 
+                    <Link to='/'>
+                        <img
                             onClick={
                                 () => this.props.deleted(this.props.id, this.props.index)
                             } 

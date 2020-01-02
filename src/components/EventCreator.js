@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import closeIcon from '../assets/images/close-cross-in-circular-outlined-interface-button-2.png';
 
 class EventCreator extends Component {
     state = {
+        userId: '',
+        userName: '',
         title: '',
         year: 0,
         month: 0,
         day: 0,
         background: ""
+    }
+
+    async componentDidMount() {
+        const userId = await localStorage.getItem('userId')
+        const userName = await localStorage.getItem('name')
+        this.setState({ userId, userName })
     }
 
     titleChange = e => {
@@ -23,9 +31,9 @@ class EventCreator extends Component {
         const month = parseInt(dateArray[1]);
         const day = parseInt(dateArray[2]);
         this.setState({
-            year: year,
-            month: month,
-            day: day
+            year,
+            month,
+            day
         });
     }
 
@@ -37,6 +45,8 @@ class EventCreator extends Component {
         e.preventDefault();
 
         const event = {
+            userId: this.state.userId,
+            userName: this.state.userName,
             title: this.state.title,
             year: this.state.year,
             month: this.state.month,
@@ -54,8 +64,8 @@ class EventCreator extends Component {
                     day: 0,
                     background: ''
                 }, () => {
-                    this.props.bringMeBack(eventInfo);
-                    this.props.history.push('/home')
+                    this.props.getNewEvent(eventInfo);
+                    this.props.history.push(`/${this.state.userName}`)
                 });
             })
             .catch(e => console.log(e))
@@ -65,11 +75,11 @@ class EventCreator extends Component {
         return (
             <div className="evntAddFormCont">
                 <div className="eventAdderForm">
-                    <Link
+                    <div
                         style={{ position: "relative", alignSelf: "flex-start", bottom: "15px" }}
-                        onClick={this.props.bringMeBack} to="/home" >
+                        onClick={this.props.bringMeBack}>
                         <img src={closeIcon} alt="close"></img>
-                    </Link>
+                    </div>
                     <form onSubmit={this.onSubmit}>
                         <label htmlFor="title">Event Name: </label>
                         <input type="text" value={this.state.title} name="Title" onChange={this.titleChange} placeholder="Vacation!" />

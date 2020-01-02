@@ -33,6 +33,7 @@ export default class Login extends Component {
                 if (!user) {
                     console.log('No user found!')
                 } else {
+                    localStorage.setItem('userId', user._id)
                     localStorage.setItem('name', user.name)
                     localStorage.setItem('loggedIn', 'true')
                     this.setState({ 

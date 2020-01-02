@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios'
 
 import AddEventBtn from "./AddEventBtn";
@@ -18,12 +18,23 @@ export default class UserPage extends Component {
             eventInfo: {},
             events: {},
             amountOfEvents: 0,
-            countdownContainerGrid: 'countdownContainerGrid'
-        };
+            countdownContainerGrid: 'countdownContainerGrid',
+            addEventStyle: {
+                position: 'relative',
+                transition: '.5s',
+                top: '18px'
+            },
+            eventFormStyle: {
+                position: 'relative',
+                transition: '1s',
+                top: '-750px'
+            }
+        }
     }
 
     async componentDidMount() {
-        const res = await fetch(`http://localhost:3001/events`);
+        const userId = localStorage.getItem('userId')
+        const res = await fetch(`http://localhost:3001/events/${userId}`);
         const events = await res.json();
         const amountOfEvents = events.length
         this.setState({ events, loading: !this.state.loading },
@@ -33,26 +44,57 @@ export default class UserPage extends Component {
                 } else if (amountOfEvents === 1) {
                     this.setState({ countdownContainerGrid: "countdownContainerGrid1" })
                 }
-            });
+            })
     }
 
-    style = {
-        display: "initial"
-    };
-
     hideMe = () => {
-        this.style = {
-            display: "none"
-        };
-        this.setState({ isHidden: true });
-    };
+        this.setState({
+            addEventStyle: {
+                position: 'relative',
+                transition: '.5s',
+                top: '-200px',
+            },
+            eventFormStyle: {
+                position: 'relative',
+                transition: '1s',
+                top: '-200px',
+                zIndex: '2'
+            },
+            isHidden: true
+        })
+    }
 
-    bringMeBack = eventInfo => {
-        this.style = {
-            display: "initial"
-        };
-        this.setState({ isHidden: false, events: [...this.state.events.reverse(), eventInfo]});
-    };
+    bringMeBack = () => {
+        this.setState({
+            addEventStyle: {
+                position: 'relative',
+                transition: '.5s',
+                top: '0px'
+            },
+            eventFormStyle: {
+                position: 'relative',
+                transition: '.7s',
+                top: '-750px'
+            },
+            isHidden: false
+        })
+    }
+
+    getNewEvent = eventInfo => {
+        this.setState({ 
+            addEventStyle: {
+                position: 'relative',
+                transition: '.5s',
+                top: '0px'
+            },
+            eventFormStyle: {
+                position: 'relative',
+                transition: '.7s',
+                top: '-750px'
+            },
+            isHidden: false, 
+            events: [...this.state.events.reverse(), eventInfo] })
+    }
 
     deleted = (eventId, index) => {
         let events = this.state.events
@@ -70,25 +112,23 @@ export default class UserPage extends Component {
         else {
             return (
                 <Router>
-                    <div style={this.style}>
-                        <AddEventBtn hideMe={this.hideMe} />
+                    <div style={this.state.addEventStyle} onClick={this.hideMe}>
+                        <AddEventBtn />
                     </div>
-                    <Route
-                        exact
-                        path="/add-an-event"
-                        render={() => (
-                            <EventCreator
-                                getNewEvent={this.getNewEvent}
-                                bringMeBack={this.bringMeBack}
-                            />
-                        )}
-                    />
-                    <CountdownContainer
-                        newEvent={this.state.newEvent}
-                        events={this.state.events}
-                        containerGrid={this.state.countdownContainerGrid}
-                        deleted={this.deleted}
-                    />
+                    <div style={this.state.eventFormStyle} onClick={this.hideMeToo}>
+                        <EventCreator
+                            getNewEvent={this.getNewEvent}
+                            bringMeBack={this.bringMeBack}
+                        />
+                    </div>
+                    <div style={{ position: "relative", top: '-350px' }}>
+                        <CountdownContainer
+                            newEvent={this.state.newEvent}
+                            events={this.state.events}
+                            containerGrid={this.state.countdownContainerGrid}
+                            deleted={this.deleted}
+                        />
+                    </div>
                 </Router>
             )
         }
