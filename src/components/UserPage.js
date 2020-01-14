@@ -51,12 +51,12 @@ export default class UserPage extends Component {
         this.setState({
             addEventStyle: {
                 position: 'relative',
-                transition: '.5s',
+                transition: 'all .5s',
                 top: '-200px',
             },
             eventFormStyle: {
                 position: 'relative',
-                transition: '1s',
+                transition: 'all .7s ease-in-out .1s',
                 top: '-200px',
                 zIndex: '2'
             },
@@ -68,7 +68,7 @@ export default class UserPage extends Component {
         this.setState({
             addEventStyle: {
                 position: 'relative',
-                transition: '.5s',
+                transition: 'all .7s ease-in-out .1s',
                 top: '0px'
             },
             eventFormStyle: {
@@ -81,7 +81,7 @@ export default class UserPage extends Component {
     }
 
     getNewEvent = eventInfo => {
-        this.setState({ 
+        this.setState({
             addEventStyle: {
                 position: 'relative',
                 transition: '.5s',
@@ -92,8 +92,16 @@ export default class UserPage extends Component {
                 transition: '.7s',
                 top: '-750px'
             },
-            isHidden: false, 
-            events: [...this.state.events, eventInfo] })
+            isHidden: false,
+            events: [...this.state.events, eventInfo]
+        }, () => {
+            const amountOfEvents = this.state.events.length
+            if (amountOfEvents === 2) {
+                this.setState({ countdownContainerGrid: "countdownContainerGrid2" })
+            } else if (amountOfEvents === 1) {
+                this.setState({ countdownContainerGrid: "countdownContainerGrid1" })
+            }
+        })
     }
 
     deleted = (eventId, index) => {
@@ -101,7 +109,14 @@ export default class UserPage extends Component {
         events.splice(index, 1)
         axios.delete('http://localhost:3001/events/delete', { params: { eventId } })
             .then(async (response) => {
-                this.setState({ events })
+                this.setState({ events }, () => {
+                    const amountOfEvents = this.state.events.length
+                    if (amountOfEvents === 2) {
+                        this.setState({ countdownContainerGrid: "countdownContainerGrid2" })
+                    } else if (amountOfEvents === 1) {
+                        this.setState({ countdownContainerGrid: "countdownContainerGrid1" })
+                    }
+                })
             })
     }
 
@@ -121,7 +136,7 @@ export default class UserPage extends Component {
                             bringMeBack={this.bringMeBack}
                         />
                     </div>
-                    <div style={{ position: "relative", top: '-350px' }}>
+                    <div style={{ position: "relative", top: '-235px', transition: '.5s' }}>
                         <CountdownContainer
                             newEvent={this.state.newEvent}
                             events={this.state.events}

@@ -15,8 +15,19 @@ class Countdown extends Component {
         }
     }
 
+    componentDidMount() {
+        this._isMounted = true
+    }
+
+    deleted = () => {
+        this._isMounted = false
+        this.props.deleted(this.props.id, this.props.index)
+    }
+
     interval = setInterval(() => {
-        this.setState({ second: this.state.second + 1 })
+        if (this._isMounted) {
+            this.setState({ second: this.state.second + 1 })
+        }
     }, 1000);
 
     checkForBackground() {
@@ -35,7 +46,7 @@ class Countdown extends Component {
 
     render() {
         this.checkForBackground();
-        
+
         const event = new Date(`${this.props.month}/${this.props.day}/${this.props.year}`).getTime();
 
         let date = new Date().getTime();
@@ -54,9 +65,7 @@ class Countdown extends Component {
                 <div className="textContainer" style={bgColor}>
                     <div>
                         <img
-                            onClick={
-                                () => this.props.deleted(this.props.id, this.props.index)
-                            } 
+                            onClick={this.deleted}
                             src={closeIcon} alt="close">
                         </img>
                     </div>

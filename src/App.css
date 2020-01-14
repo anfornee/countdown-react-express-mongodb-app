@@ -79,13 +79,21 @@ font-family: 'Oxygen', sans-serif; */
 }
 
 .textContainer img {
+  transition: .1s;
   width: 30px; 
   height: auto;
   filter: invert(100%);
   position: absolute; 
-  top: 20px;
-  left: 30px;
+  top: 10%;
+  left: 6%;
   z-index: 1;
+  cursor: pointer;
+}
+
+.textContainer img:hover {
+  width: 33px;
+  top: 9.6%;
+  left: 5.75%;
 }
 
 .text {
@@ -119,25 +127,30 @@ font-family: 'Oxygen', sans-serif; */
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
   margin-bottom: 0px;
 }
 
 .eventAdderForm {
+  position: relative;
   margin: 1em 0 1em 0;
   display: flex;
   flex-direction: column;
-  align-items: space-around;
+  align-items: center;
   font-size: 1.75em;
   color: white;
   border-radius: 20px;
   background: #588abd;
   width: 50%;
-  padding: 1em;
+  padding: .2em;
 }
 
 .eventAdderForm img {
-  width: 40px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 35px;
   height: auto;
   filter: invert(100%);
 }
@@ -146,7 +159,9 @@ font-family: 'Oxygen', sans-serif; */
   font-size: 1em;
   width: 60%;
   border: none;
+  border-radius: 5px;
   text-align: center;
+  margin-bottom: .2em;
 }
 
 @media only screen and (max-width: 640px) {
@@ -189,13 +204,21 @@ font-family: 'Oxygen', sans-serif; */
   }
   
   .textContainer img {
+    transition: .1s;
     width: 30px; 
     height: auto;
     filter: invert(100%);
     position: absolute; 
-    top: 20px;
-    left: 30px;
+    top: 8%;
+    left: 10%;
     z-index: 1;
+    cursor: pointer;
+  }
+
+  .textContainer img:hover {
+    width: 33px;
+    top: 7.5%;
+    left: 9.7%;
   }
   
   .text {

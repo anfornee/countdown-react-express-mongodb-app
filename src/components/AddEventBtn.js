@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 
-export class AddEventBtn extends Component {
+class AddEventBtn extends Component {
 
-    render() {
-        return (
-            <div className="addEventBtn">
-                <div
-                    style={{ textDecoration: 'none', color: 'black' }}
-                    onClick={this.props.hideMe}>
+  render () {
+    return (
+      <div className='addEventBtn'>
+        <div
+          style={{ textDecoration: 'none', color: 'black' }}
+          onClick={this.props.hideMe}>
                     Add an event!
-                </div>
-            </div>
-        )
-    }
+        </div>
+      </div>
+    )
+  }
 }
 
 export default AddEventBtn

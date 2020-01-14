@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-
-import SignUp from './SignUp'
 
 export default class Login extends Component {
 
@@ -46,7 +45,7 @@ export default class Login extends Component {
 
     render() {
         if (this.state.loggedIn) {
-            window.location.href = `http://localhost:3000/${this.state.name}`
+            window.location.href = `http://localhost:3000/user/${this.state.name}`
         }
         return (
             <div className="forms-container">
@@ -76,8 +75,9 @@ export default class Login extends Component {
                     </button>
                 </form>
                 <br />
-                <SignUp />
-                {/* <Link to="/home">Login</Link> */}
+                <Link to='/sign-up'>
+                    <h2>Sign Up</h2>
+                </Link>
             </div>
         )
     }

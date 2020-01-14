@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 export default class SignUp extends Component {
@@ -45,10 +46,10 @@ export default class SignUp extends Component {
 
     render() {
         if (this.state.signedUp) {
-            window.location.href = `http://localhost:3000/${this.state.name}`
+            window.location.href = `http://localhost:3000/user/${this.state.name}`
         }
         return (
-            <div className="login-forms">
+            <div className="forms-container">
                 <form className="login-forms" onSubmit={this.onSubmit}>
                     <h1>Sign Up</h1>
                     <input
@@ -74,6 +75,9 @@ export default class SignUp extends Component {
                         Sign Up
                     </button>
                 </form>
+                <Link to='/'>
+                    <h2>Login</h2>
+                </Link>
             </div>
         )
     }

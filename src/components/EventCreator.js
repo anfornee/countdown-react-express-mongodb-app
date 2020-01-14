@@ -75,7 +75,7 @@ class EventCreator extends Component {
             <div className="evntAddFormCont">
                 <div className="eventAdderForm">
                     <div
-                        style={{ position: "relative", alignSelf: "flex-start", bottom: "15px" }}
+                        className='eventAdderFormImg'
                         onClick={this.props.bringMeBack}>
                         <img src={closeIcon} alt="close"></img>
                     </div>
