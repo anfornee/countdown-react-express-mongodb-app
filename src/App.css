@@ -13,6 +13,36 @@ font-family: 'Oxygen', sans-serif; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 1vw;
+}
+
+.forms-container h1 {
+  font-size: 3.5em;
+}
+
+.forms-container input {
+  font-size: 1.5em;
+  border-radius: 10px;
+  border: none;
+  padding: .25em .5em;
+  margin-bottom: 1.5em;
+}
+
+.forms-container button {
+  font-size: 1.5em;
+  padding: .5em 1em;
+  border-radius: 15px;
+  border: none;
+  padding: .3em 1.25em;
+  background: rgb(237, 238, 244);
+}
+
+.forms-container button:hover {
+  cursor: pointer;
+}
+
+.forms-container button:focus {
+  background: rgb(175, 175, 183);
 }
 
 .login-forms {
@@ -24,6 +54,11 @@ font-family: 'Oxygen', sans-serif; */
 
 .login-forms input {
   margin-bottom: 1em;
+}
+
+.mainCountdownContainer {
+  text-align: center;
+  position: relative;
 }
 
 .countdownContainerGrid {
@@ -46,16 +81,16 @@ font-family: 'Oxygen', sans-serif; */
 }
 
 .addEventBtn {
-  margin: auto;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin: 2em auto;
   text-align: center;
   font-size: 2em;
   width: 200px;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 20px;
   border-radius: 30px;
-  background: #43cea2;
+  background: rgb(87, 201, 165);
   transition: 1s;
+  z-index: 100;
+  cursor: pointer;
 }
 
 .eventContainer {
@@ -76,6 +111,7 @@ font-family: 'Oxygen', sans-serif; */
   height: 250px;
   border-radius: 50px;
   overflow: hidden;
+  color: white;
 }
 
 .textContainer img {
@@ -104,8 +140,7 @@ font-family: 'Oxygen', sans-serif; */
   flex-direction: column;
   justify-content: center;
   font-family: 'Open Sans', sans-serif;
-  letter-spacing: 2px;
-  color: white;
+  letter-spacing: .25em;
 }
 
 .imgContainer {
@@ -124,12 +159,17 @@ font-family: 'Oxygen', sans-serif; */
 }
 
 .evntAddFormCont {
+  transition: .2s;
   width: 100%;
+  height: 105vh;
   display: flex;
+  position: absolute;
+  top: 0;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin-bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.742);
 }
 
 .eventAdderForm {
@@ -141,9 +181,9 @@ font-family: 'Oxygen', sans-serif; */
   font-size: 1.75em;
   color: white;
   border-radius: 20px;
-  background: #588abd;
-  width: 50%;
-  padding: .2em;
+  background: #57C9A5;
+  width: 14em;
+  padding: 1em .5em;
 }
 
 .eventAdderForm img {
@@ -164,9 +204,37 @@ font-family: 'Oxygen', sans-serif; */
   margin-bottom: .2em;
 }
 
+.eventAdderForm button {
+  font-size: .75em;
+  padding: .5em 1em;
+  margin-top: .8em;
+  border-radius: 15px;
+  border: none;
+  padding: .3em 1.25em;
+  background: rgb(237, 238, 244);
+}
+
+.topMenu {
+  position: absolute;
+  top: 1em;
+  right: 2em;
+  text-align: right;
+  z-index: 200;
+}
+
+.topMenuLogout:hover {
+  cursor: pointer;
+}
+
+.topMenu p {
+  margin: .25em;
+}
+
 @media only screen and (max-width: 640px) {
 
   .countdownContainerGrid {
+    top: 13em;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-items: center;

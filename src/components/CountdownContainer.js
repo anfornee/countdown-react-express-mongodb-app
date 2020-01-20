@@ -34,7 +34,7 @@ class CountdownContainer extends Component {
         let events = this.props.events;
         
         return (
-            <div className="App">
+            <div className="mainCountdownContainer">
                 <h1>Stuff be happening!</h1>
                 {
                     this.state.events.length > 0
