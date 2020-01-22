@@ -39,6 +39,17 @@
 		"sC": 3,
 		"tS": 0
 		},
+	"/backend/models/users.model.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/backend/models/users.model-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/backend/node_modules": {
 		"ft": 65536,
 		"oA": 2,
@@ -71,6 +82,146 @@
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
+		},
+	"/backend/routes/users.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/backend/routes/users-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/build/asset-manifest.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/build/asset-manifest-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/build/favicon.ico": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/favicon.ico",
+		"oF": 0
+		},
+	"/build/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/index.html",
+		"oF": 0
+		},
+	"/build/manifest.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/build/manifest-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/build/precache-manifest.541d47c1ee4bdb87b9ffe40c0319ccf8.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/build/precache-manifest.541d47c1ee4bdb87b9ffe40c0319ccf8-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/build/service-worker.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/build/service-worker-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/build/static/css/main.e54f7598.chunk.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/build/static/css/main.e54f7598.chunk-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/build/static/css/main.e54f7598.chunk.css.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/static/css/main.e54f7598.chunk.css.map",
+		"oF": 0
+		},
+	"/build/static/js/2.04730643.chunk.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/build/static/js/2.04730643.chunk-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/build/static/js/2.04730643.chunk.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/static/js/2.04730643.chunk.js.map",
+		"oF": 0
+		},
+	"/build/static/js/main.767d4227.chunk.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/build/static/js/main.767d4227.chunk-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/build/static/js/main.767d4227.chunk.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/static/js/main.767d4227.chunk.js.map",
+		"oF": 0
+		},
+	"/build/static/js/runtime~main.a8a9905a.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/build/static/js/runtime~main.a8a9905a-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/build/static/js/runtime~main.a8a9905a.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/static/js/runtime~main.a8a9905a.js.map",
+		"oF": 0
 		},
 	"/node_modules": {
 		"ft": 65536,
@@ -210,13 +361,13 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"/node_modules/resolve-pathname/index.js": {
+	"/node_modules/resolve-pathname/esm/resolve-pathname.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 1,
-		"oAP": "/node_modules/resolve-pathname/index-min.js",
+		"oAP": "/node_modules/resolve-pathname/esm/resolve-pathname-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -243,13 +394,13 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"/node_modules/value-equal/index.js": {
+	"/node_modules/value-equal/esm/value-equal.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 1,
-		"oAP": "/node_modules/value-equal/index-min.js",
+		"oAP": "/node_modules/value-equal/esm/value-equal-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -385,6 +536,50 @@
 		"mi": 1,
 		"oA": 1,
 		"oAP": "/src/components/EventCreator-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/components/Login.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/src/components/Login-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/components/SignUp.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/src/components/SignUp-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/components/TopMenu.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/src/components/TopMenu-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/src/components/UserPage.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/src/components/UserPage-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
