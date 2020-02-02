@@ -29,8 +29,8 @@ export default class Login extends Component {
     axios.post('http://localhost:3001/users/login', user)
       .then(res => {
         const user = res.data
-        if (!user) {
-          console.log('No user found!')
+        if (user === 'Invalid Password') {
+          alert('Could not find user with that Name and Password.')
         } else {
           localStorage.setItem('userId', user._id)
           localStorage.setItem('name', user.name)

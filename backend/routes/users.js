@@ -8,25 +8,30 @@ router.post('/login', async (req, res) => {
   const user = await User.findOne({ name: req.body.name })
   const valid = await bcrypt.compare(req.body.password, user.password)
   if (!valid) {
-    console.log('Invalid Password')
+    res.send('Invalid Password')
+  } else {
+    res.send(user)
   }
-  res.send(user)
 })
 
 // Create New User
-router.post('/signup', async (req, res) => {
-  // Password Hashing
-  // const salt = await bcrypt.genSalt(10)
-  // const hashedPassword = await bcrypt.hash(req.body.password, salt)
-
+router.post('/signup', (req, res) => {
   // Create User
   const newUser = new User({
     name: req.body.name,
     password: req.body.password
   })
-  newUser.save()
-    .then(() => res.status(200).json(newUser))
-    .catch(err => res.status(400).json('Error: ' + err))
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) throw err
+    bcrypt.hash(newUser.password, salt, (err, hash) => {
+      if (err) throw err
+      newUser.password = hash
+      newUser
+        .save()
+        .then(user => res.send(user))
+        .catch(err => console.log(err))
+    })
+  })
 })
 
 module.exports = router
